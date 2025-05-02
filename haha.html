@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prank Sederhana</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .message {
+      font-size: 24px;
+      max-width: 100%;
+      word-break: break-word;
+    }
+
+    .typing::after {
+      content: "|";
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <span id="prankMessage" class="typing"></span>
+  </div>
+
+  <script>
+    const text = "Hehehe... Akun kamu sudah kusadap!";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("prankMessage").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 100);
+      }
+    }
+    window.onload = typeEffect;
+  </script>
+</body>
+</html>
